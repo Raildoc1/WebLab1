@@ -80,9 +80,14 @@ public class Receiver {
         }
     }
 
-    public void close() throws IOException {
-        socket.leaveGroup(group);
-        socket.close();
+    public void close() {
+        try {
+            socket.leaveGroup(group);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            socket.close();
+        }
     }
 
     private class client {

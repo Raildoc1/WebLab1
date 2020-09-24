@@ -6,10 +6,12 @@ import java.util.Scanner;
 public class main {
 
     public static void main(String[] args) {
+        Sender sender = null;
+        Receiver receiver = null;
         try {
-        Sender sender = new Sender("hello");
-        Receiver receiver = new Receiver();
-        Scanner sc = new Scanner(System.in);
+            sender = new Sender("hello");
+            receiver = new Receiver();
+            Scanner sc = new Scanner(System.in);
 
             while(true) {
                 sender.iteration();
@@ -23,8 +25,8 @@ public class main {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            sender.close();
-            receiver.close();
+            if(sender != null)sender.close();
+            if(receiver != null)receiver.close();
         }
     }
 
