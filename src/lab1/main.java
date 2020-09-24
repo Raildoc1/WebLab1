@@ -20,11 +20,11 @@ public class main {
                 }
             }
 
-            sender.close();
-            receiver.close();
-
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            sender.close();
+            receiver.close();
         }
     }
 
